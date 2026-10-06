@@ -1,0 +1,791 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f6f1e7;color:#111;font-family:Arial,Helvetica,sans-serif}
+.page{width:min(1540px,100%);margin:0 auto;background:white;box-shadow:0 0 24px rgba(0,0,0,.12)}
+img{display:block;max-width:100%}
+.image-section{width:100%;overflow:hidden}
+.image-hotspot-wrap{position:relative;width:100%}
+.image-hotspot-wrap>img{width:100%;height:auto}
+.hotspot{position:absolute;display:block;z-index:4;border-radius:8px}
+.hotspot:hover,.hotspot:focus-visible{outline:3px solid rgba(0,111,205,.55);outline-offset:-3px}
+
+/* Opening category click regions, based on the supplied first-page artwork. */
+.opening-wrap .cat{top:38.6%;height:23.5%}
+.opening-wrap .advertising{left:1.0%;width:15.0%}
+.opening-wrap .educational{left:17.0%;width:15.0%}
+.opening-wrap .fundraising{left:33.0%;width:15.0%}
+.opening-wrap .comics{left:49.0%;width:15.0%}
+.opening-wrap .biography{left:65.0%;width:15.0%}
+.opening-wrap .political{left:81.0%;width:18.0%}
+
+/* Selected Projects now belongs to page one instead of occupying a separate second page. */
+.selected-projects{padding:26px 20px 30px;background:#fff;border-top:1px solid #d9d9d9}
+.selected-heading-row{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.selected-heading-row h1{margin:0;display:flex;align-items:center;gap:18px;flex:1;justify-content:center;font-family:Georgia,serif;color:#153b78;font-size:clamp(28px,5vw,50px);font-weight:700;line-height:1.05}
+.selected-heading-row h1 span{height:2px;background:#6380aa;flex:1;max-width:230px}
+.carousel-controls{display:flex;gap:8px;flex:none}
+.carousel-arrow{width:48px;height:48px;border:0;border-radius:50%;background:#153b78;color:#fff;font-size:29px;line-height:1;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.18);transition:transform .15s ease,background .15s ease}
+.carousel-arrow:hover,.carousel-arrow:focus-visible{background:#0878d1;transform:scale(1.06);outline:none}
+.carousel-arrow:disabled{opacity:.34;cursor:default;transform:none}
+
+.project-carousel{display:flex;gap:18px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;padding:2px 2px 16px;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#8ba1c2 #eef2f7}
+.project-carousel::-webkit-scrollbar{height:10px}
+.project-carousel::-webkit-scrollbar-track{background:#eef2f7;border-radius:10px}
+.project-carousel::-webkit-scrollbar-thumb{background:#8ba1c2;border-radius:10px}
+.selected-card{flex:0 0 calc((100% - 54px)/4);min-width:220px;text-decoration:none;color:#17325c;text-align:center;border:0;border-radius:0;overflow:visible;background:#fff;scroll-snap-align:start;box-shadow:none;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.selected-card:hover,.selected-card:focus-visible{transform:translateY(-3px);box-shadow:none;border-color:transparent;outline:none}
+.selected-card:target,.selected-card.is-targeted{box-shadow:0 0 0 4px rgba(8,120,209,.28),0 8px 20px rgba(14,35,64,.18)}
+.selected-card img{width:100%;aspect-ratio:1.55/1;object-fit:cover;border:1px solid #9ba8b8;background:#f0f0f0}
+.selected-card strong{display:block;font-family:Georgia,serif;font-size:clamp(17px,1.8vw,23px);line-height:1.1;margin:7px 8px 10px;min-height:2.2em}
+.selected-card em{font-style:normal;display:inline-block;background:#0878d1;color:white;padding:8px 20px;border-radius:6px;font-weight:700;font-size:14px;margin:0 0 15px}
+.scroll-hint{margin:5px 0 0;text-align:right;font-size:13px;color:#657084}
+
+/* Imagineer page stays intact; only the click targets were redirected to matching projects. */
+.final-page{background:#df3328}
+.final-wrap .final{height:20%;top:64%}
+.final-wrap .product{left:5%;width:14%}
+.final-wrap .company{left:20%;width:15%}
+.final-wrap .institution{left:35%;width:16%}
+.final-wrap .service{left:51%;width:14%}
+.final-wrap .person{left:65%;width:15%}
+.final-wrap .idea{left:80%;width:15%}
+.final-wrap .email{top:91%;left:10%;width:27%;height:7%}
+.final-wrap .phone{top:91%;left:37%;width:21%;height:7%}
+
+@media(max-width:900px){
+  .selected-card{flex-basis:calc((100% - 36px)/3)}
+}
+@media(max-width:720px){
+  .page{box-shadow:none}
+  .selected-projects{padding:18px 10px 24px}
+  .selected-heading-row{align-items:flex-start;gap:10px}
+  .selected-heading-row h1{font-size:29px;gap:9px}
+  .selected-heading-row h1 span{max-width:80px}
+  .carousel-arrow{width:42px;height:42px;font-size:25px}
+  .selected-card{flex-basis:78%;min-width:245px}
+  .selected-card strong{font-size:19px}
+  .scroll-hint{text-align:center}
+  .hotspot:hover{outline-width:2px}
+}
+@media(max-width:420px){
+  .selected-heading-row{flex-wrap:wrap}
+  .carousel-controls{margin-left:auto}
+  .selected-card{flex-basis:86%}
+}
+
+/* Crisp first-page artwork and live contact rows. */
+.opening-wrap>img{width:100%;height:auto}
+.contact-bar{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:15px 28px;background:#d9f2fb;border-top:1px solid #b8dce9;color:#0c2e63;font-weight:700}
+.contact-link{display:inline-flex;align-items:center;gap:8px;color:#0c2e63;text-decoration:none;font-size:clamp(15px,1.7vw,20px);white-space:nowrap}
+.contact-link:hover,.contact-link:focus-visible{text-decoration:underline;outline:2px solid #0878d1;outline-offset:4px;border-radius:3px}
+.contact-tagline{margin-left:auto;font-family:"Brush Script MT","Segoe Script",cursive;font-style:italic;font-size:clamp(22px,3vw,36px);font-weight:400;color:#17325c;white-space:nowrap}
+.final-contact{background:#cf3a2f;border-top:0;justify-content:center;padding:20px 28px 26px}
+.final-contact .contact-link{background:#fbf0d3;color:#111;border:3px solid #111;box-shadow:4px 5px 0 #111;padding:13px 22px;font-size:clamp(16px,1.7vw,21px)}
+
+/* Revised category hotspot geometry for the new high-resolution top crop. */
+.opening-wrap .cat{top:49.5%;height:29.0%}
+
+/* The raster contact boxes are no longer used; contact is live HTML instead. */
+.final-wrap .email,.final-wrap .phone{display:none}
+
+@media(max-width:720px){
+  .contact-bar{padding:13px 14px;gap:12px;justify-content:center}
+  .contact-tagline{width:100%;text-align:center;margin-left:0;white-space:normal}
+  .final-contact .contact-link{padding:10px 14px}
+}
+
+/* Rebuilt high-resolution first-page service strip: no rasterized tiny text. */
+.service-strip{background:#fff;padding:12px 18px 14px;border-top:1px solid #d9e7ef}
+.service-strip>img{width:100%;height:auto;display:block;max-height:290px;object-fit:contain;object-position:center bottom}
+.service-strip-links{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:-4px;text-align:center}
+.service-choice{display:flex;flex-direction:column;align-items:center;gap:7px;text-decoration:none;color:#17325c;min-width:0}
+.service-choice strong{font-family:Georgia,serif;font-size:clamp(14px,1.65vw,21px);line-height:1}
+.service-button{display:inline-block;background:#0878d1;color:#fff;border-radius:6px;padding:7px 14px;font-size:clamp(11px,1.1vw,14px);font-weight:700;white-space:nowrap}
+.service-button.disabled{background:#777}
+a.service-choice:hover .service-button,a.service-choice:focus-visible .service-button{background:#153b78}
+a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;border-radius:4px}
+.opening-contact{border-top:1px solid #b8dce9;border-bottom:1px solid #b8dce9}
+.selected-projects{border-top:0}
+
+@media(max-width:720px){
+  .service-strip{padding:10px 8px 12px;overflow-x:auto}
+  .service-strip>img{min-width:760px;max-height:none}
+  .service-strip-links{min-width:760px;gap:8px}
+}
+
+/* v7: restore the approved first-page artwork at a larger, more readable scale. */
+.page{width:min(1332px,100%)}
+.opening-wrap>img{width:100%;height:auto;image-rendering:auto}
+
+/* Keep every edge of the supplied masthead visible, including at narrow widths. */
+.opening-wrap{padding:8px 10px 0;background:#fff;overflow:visible}
+.opening-wrap>img{width:100%;height:auto;object-fit:contain;object-position:center top}
+
+/* Correct the mug copy with live, crisp text and make the six desk books usable. */
+.mug-message{position:absolute;z-index:5;left:6.8%;top:38.1%;width:5.3%;height:10.2%;display:flex;align-items:center;justify-content:center;text-align:center;color:#111;font-weight:900;font-size:clamp(7px,.72vw,12px);line-height:1.05;transform:rotate(-1deg);pointer-events:none}
+.desk-book{left:42.3%;width:17.2%;height:4.2%;border-radius:3px}
+.book-advertising{top:26.0%}.book-fundraising{top:29.6%}.book-education{top:33.2%}.book-biography{top:36.8%}.book-comics{top:40.4%}.book-marketing{top:44.0%}
+
+/* Keep Selected Projects compact so the opening page remains the visual focus. */
+.selected-projects{padding:14px 18px 18px}
+.selected-heading-row{margin-bottom:10px;gap:12px}
+.selected-heading-row h1{font-size:clamp(24px,3.3vw,40px);gap:12px}
+.selected-heading-row h1 span{max-width:180px}
+.carousel-arrow{width:40px;height:40px;font-size:24px}
+.project-carousel{gap:12px;padding:2px 2px 10px}
+.selected-card{flex:0 0 calc((100% - 48px)/5);min-width:190px}
+.selected-card img{aspect-ratio:1.68/1}
+.selected-card strong{font-size:clamp(15px,1.35vw,19px);margin:5px 6px 6px;min-height:2.1em}
+.selected-card em{padding:6px 15px;font-size:12px;margin-bottom:8px}
+.scroll-hint{margin-top:1px;font-size:12px}
+
+@media(max-width:1100px){
+  .selected-card{flex-basis:calc((100% - 36px)/4)}
+}
+@media(max-width:900px){
+  .selected-card{flex-basis:calc((100% - 24px)/3)}
+}
+@media(max-width:720px){
+  .selected-projects{padding:14px 10px 18px}
+  .selected-heading-row h1{font-size:27px}
+  .carousel-arrow{width:38px;height:38px;font-size:23px}
+  .selected-card{flex-basis:72%;min-width:230px}
+}
+
+/* v8: restore the user's preferred opening artwork and correct page proportions. */
+.opening-wrap>img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* The prior-approved opening crop is much taller, so its category hotspots sit here. */
+.opening-wrap .cat{top:48.0%;height:28.0%}
+
+/* Make the lower character/service icons clearly secondary to the opening panel. */
+.service-strip{
+  padding:14px 18px 12px;
+  overflow:hidden;
+}
+.service-strip>img,
+.service-strip-links{
+  width:72%;
+  max-width:960px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.service-strip>img{
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+}
+.service-strip-links{
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+  margin-top:-2px;
+}
+.service-choice strong{font-size:clamp(13px,1.25vw,18px)}
+.service-button{padding:6px 12px;font-size:clamp(10px,.95vw,13px)}
+
+/* Keep Selected Projects compact beneath the first-page material. */
+.selected-projects{padding:12px 18px 16px}
+.selected-heading-row{margin-bottom:8px}
+.selected-heading-row h1{font-size:clamp(23px,3vw,36px)}
+.carousel-arrow{width:38px;height:38px;font-size:22px}
+.selected-card{min-width:178px}
+.selected-card strong{font-size:clamp(14px,1.2vw,18px)}
+.selected-card em{padding:5px 13px;font-size:11px}
+
+@media(max-width:720px){
+  .service-strip>img,.service-strip-links{width:94%;min-width:0;max-width:none}
+  .service-strip{overflow-x:hidden}
+}
+
+/* v9: first-page section links use the compact, sharp icon row from the user's reference.
+   The larger character-with-legs artwork remains on the following Imagineer page only. */
+.service-strip{display:none!important}
+.compact-service-strip{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:0;
+  padding:12px 18px 14px;
+  background:#fff7e6;
+  border-top:1px solid #eadfc9;
+  border-bottom:1px solid #e3d7c0;
+}
+
+/* Use the user's supplied six-icon artwork as one continuous row. */
+.compact-service-strip{
+  aspect-ratio:475/104;
+  padding:0;
+  background:#fff7e6 url("assets/site/portfolio-type-icons.png") center top/100% 100% no-repeat;
+}
+.compact-service-choice{padding:0;border-right:0;min-height:100%}
+.compact-service-choice>*{visibility:hidden}
+.compact-service-choice{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  text-align:center;
+  text-decoration:none;
+  color:#142f5a;
+  padding:4px 16px 2px;
+  border-right:1px solid #d7cdb9;
+}
+.compact-service-choice:last-child{border-right:0}
+.compact-icon{
+  width:100%;
+  max-width:118px;
+  height:92px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:4px;
+}
+.compact-icon svg{width:100%;height:100%;display:block}
+.compact-service-choice strong{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(15px,1.45vw,21px);
+  line-height:1.05;
+  font-weight:800;
+  letter-spacing:.01em;
+  margin:0 0 8px;
+  white-space:nowrap;
+}
+.compact-button{
+  display:block;
+  width:min(100%,158px);
+  min-height:34px;
+  padding:8px 10px;
+  border-radius:7px;
+  background:#0878d1;
+  color:#fff;
+  font-size:clamp(11px,1vw,14px);
+  line-height:1.15;
+  font-weight:700;
+  box-shadow:0 1px 2px rgba(0,0,0,.12);
+}
+.compact-service-choice:hover .compact-button,
+.compact-service-choice:focus-visible .compact-button{background:#153b78}
+.compact-service-choice:focus-visible{outline:3px solid rgba(8,120,209,.45);outline-offset:-3px}
+
+/* Keep the live contact row fully visible below the compact icons. */
+.opening-contact{position:relative;z-index:2;padding-top:14px;padding-bottom:14px}
+
+@media(max-width:850px){
+  .compact-service-strip{grid-template-columns:repeat(6,minmax(0,1fr));padding:0;row-gap:0;min-width:640px}
+  .compact-service-choice:nth-child(3){border-right:0}
+  .compact-service-choice:nth-child(n+4){border-top:1px solid #d7cdb9;padding-top:12px}
+  .compact-icon{height:82px;max-width:106px}
+}
+@media(max-width:520px){
+  .compact-service-strip{grid-template-columns:repeat(2,1fr)}
+  .compact-service-choice{border-right:1px solid #d7cdb9!important;border-top:1px solid #d7cdb9!important;padding-top:10px}
+  .compact-service-choice:nth-child(odd){border-left:0}
+  .compact-service-choice:nth-child(even){border-right:0!important}
+  .compact-service-choice:nth-child(-n+2){border-top:0!important}
+  .compact-icon{height:76px}
+}
+
+
+/* v10: prevent first-page section icons from clipping and sharpen the opening artwork. */
+.opening-wrap{overflow:visible}
+.opening-wrap>img{
+  width:100%;
+  height:auto;
+  display:block;
+  image-rendering:auto;
+}
+.compact-service-strip{
+  padding-top:20px;
+  padding-bottom:16px;
+  overflow:visible;
+  align-items:start;
+}
+.compact-service-choice{
+  justify-content:flex-start;
+  overflow:visible;
+  padding-top:6px;
+}
+.compact-icon{
+  height:108px;
+  max-width:122px;
+  margin-top:0;
+  margin-bottom:5px;
+  overflow:visible;
+  flex:0 0 108px;
+}
+.compact-icon svg{
+  width:100%;
+  height:100%;
+  display:block;
+  overflow:visible;
+}
+.compact-service-choice strong{
+  line-height:1.15;
+  margin-top:2px;
+  margin-bottom:8px;
+}
+@media(max-width:850px){
+  .compact-service-strip{padding-top:18px}
+  .compact-icon{height:96px;flex-basis:96px;max-width:110px}
+}
+@media(max-width:520px){
+  .compact-icon{height:88px;flex-basis:88px;max-width:102px}
+}
+
+
+/* v11: definitive first-page crispness and icon-row fit. */
+.page{width:min(1536px,100%)}
+.opening-wrap{overflow:hidden;background:#fff}
+.opening-wrap>img{
+  width:100%;
+  height:auto;
+  display:block;
+  image-rendering:auto;
+}
+/* The new opening-crisp.png is cropped from the original 1536px source,
+   not an enlarged screenshot. */
+.opening-wrap .cat{top:49.5%;height:29.0%}
+
+.compact-service-strip{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  align-items:stretch;
+  gap:0;
+  min-height:228px;
+  padding:20px 18px 18px;
+  overflow:visible;
+  background:#fff7e6;
+  border-top:1px solid #eadfc9;
+  border-bottom:1px solid #e3d7c0;
+}
+.compact-service-choice{
+  min-width:0;
+  min-height:188px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  text-align:center;
+  padding:0 14px 2px;
+  overflow:visible;
+}
+.compact-icon{
+  width:100%;
+  max-width:118px;
+  height:100px;
+  flex:0 0 100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 8px;
+  overflow:visible;
+}
+.compact-icon svg{width:100%;height:100%;display:block;overflow:visible}
+.compact-service-choice strong{
+  display:block;
+  flex:0 0 auto;
+  font-size:clamp(15px,1.35vw,20px);
+  line-height:1.1;
+  margin:0 0 9px;
+  white-space:nowrap;
+  overflow:visible;
+}
+.compact-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:min(100%,160px);
+  min-height:36px;
+  padding:8px 9px;
+  line-height:1.1;
+  flex:0 0 auto;
+}
+.opening-contact{clear:both;position:relative;z-index:5}
+
+@media(max-width:850px){
+  .compact-service-strip{grid-template-columns:repeat(3,1fr);min-height:0;row-gap:18px;padding:18px 8px}
+  .compact-service-choice{min-height:176px}
+  .compact-icon{height:92px;flex-basis:92px;max-width:108px}
+}
+@media(max-width:520px){
+  .compact-service-strip{grid-template-columns:repeat(2,1fr)}
+  .compact-service-choice{min-height:170px}
+  .compact-icon{height:86px;flex-basis:86px;max-width:100px}
+}
+
+/* v12: restore the earlier preferred Andrew portrait and rebalance the first page. */
+.opening-wrap{overflow:hidden;background:#fff}
+.opening-wrap>img{
+  width:100%;
+  height:auto;
+  display:block;
+  image-rendering:auto;
+}
+/* Hotspots aligned to the taller restored opening artwork. */
+.opening-wrap .cat{top:49%;height:29%}
+
+/* Keep the six small section icons clearly secondary to the restored first page. */
+.compact-service-strip{
+  min-height:188px;
+  padding:16px 18px 14px;
+}
+.compact-service-choice{min-height:154px;padding:0 12px 2px}
+.compact-icon{height:84px;flex-basis:84px;max-width:100px;margin-bottom:5px}
+.compact-service-choice strong{font-size:clamp(14px,1.18vw,18px);margin-bottom:7px}
+.compact-button{min-height:32px;padding:6px 8px;font-size:clamp(10px,.9vw,13px)}
+
+/* Selected Projects stays compact and shows more projects at once on wide screens. */
+@media(min-width:1200px){
+  .selected-card{flex:0 0 calc((100% - 84px)/8);min-width:150px}
+  .selected-card strong{font-size:clamp(12px,1.05vw,16px)}
+  .selected-card em{font-size:10px;padding:5px 10px}
+  .project-carousel{gap:12px}
+}
+
+@media(max-width:850px){
+  .compact-service-strip{min-height:0}
+  .compact-service-choice{min-height:152px}
+  .compact-icon{height:78px;flex-basis:78px;max-width:92px}
+}
+
+/* v13 proportional first page */
+.opening-wrap > img{display:block;width:100%;height:auto;image-rendering:auto}
+.compact-service-strip{padding:10px 22px 12px}
+.compact-icon{max-width:104px;height:82px}
+.selected-projects{padding:18px 20px 22px}
+.selected-card{flex:0 0 calc((100% - 72px)/5);min-width:210px}
+.selected-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+@media (max-width:1000px){.selected-card{flex-basis:calc((100% - 36px)/3)}}
+@media (max-width:680px){.selected-card{flex-basis:82%}.compact-service-strip{grid-template-columns:repeat(3,1fr)}}
+
+/* v18 category-linked project groups */
+.selected-card[hidden]{display:none!important}
+.category-context{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 0 10px;padding:8px 12px;background:#eef6ff;border:1px solid #c9def2;border-radius:8px;color:#17325c;font-weight:700}
+.category-context[hidden]{display:none}
+.show-all-projects{border:0;background:#0878d1;color:#fff;border-radius:6px;padding:7px 12px;font-weight:700;cursor:pointer}
+.show-all-projects:hover{background:#153b78}
+
+/* Final continuation pass: preserve the complete masthead and the exact supplied icon strip. */
+.opening-wrap{box-sizing:border-box;padding:8px 10px 0;overflow:visible}
+.opening-wrap>img{width:100%;height:auto;object-fit:contain;object-position:center top}
+.mug-message{background:#fffdf4;border:1px solid rgba(20,20,20,.35);border-radius:2px}
+.compact-service-strip{
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  aspect-ratio:475/104;
+  min-height:0!important;
+  padding:0!important;
+  row-gap:0!important;
+  background:#fff7e6 url("assets/site/portfolio-type-icons.png") center/100% 100% no-repeat!important;
+  overflow:visible;
+}
+.compact-service-choice{min-height:0!important;height:100%!important;padding:0!important;border:0!important}
+.compact-service-choice>*{visibility:hidden!important}
+@media(max-width:850px){
+  .compact-service-strip{min-width:0!important;width:100%!important}
+}
+
+/* Reordered opening: masthead, compact portfolio-type links, illustrated work, profile summary. */
+.hero-masthead{
+  width:100%;
+  aspect-ratio:2048/665;
+  padding:0;
+  overflow:hidden;
+}
+.hero-masthead>img{position:absolute;inset:0 auto auto 0;width:100%;height:auto;max-width:none}
+.hero-masthead .mug-message{left:6.8%;top:79%;width:5.3%;height:18%;font-size:clamp(6px,.66vw,11px)}
+.hero-masthead .desk-book{left:42.3%;width:17.2%;height:6.2%}
+.hero-masthead .book-advertising{top:53%}.hero-masthead .book-fundraising{top:60%}.hero-masthead .book-education{top:67%}.hero-masthead .book-biography{top:74%}.hero-masthead .book-comics{top:81%}.hero-masthead .book-marketing{top:88%}
+
+.compact-service-strip{
+  width:25%!important;
+  min-width:300px!important;
+  max-width:410px!important;
+  margin:8px auto 10px!important;
+  aspect-ratio:1570/354!important;
+  background-image:url("assets/site/portfolio-type-icons-sharp.png")!important;
+  background-size:100% 100%!important;
+  box-shadow:0 1px 5px rgba(0,0,0,.12);
+}
+
+.capability-art{position:relative;width:100%;aspect-ratio:2048/440;overflow:hidden;background:#fff}
+.capability-art>img{position:absolute;left:0;top:-145%;width:100%;height:auto;max-width:none}
+.capability-art .cat{top:0;height:100%}
+.capability-art .advertising{left:1%;width:15%}
+.capability-art .educational{left:17%;width:15%}
+.capability-art .fundraising{left:33%;width:15%}
+.capability-art .comics{left:49%;width:15%}
+.capability-art .biography{left:65%;width:15%}
+.capability-art .political{left:81%;width:18%}
+
+.profile-summary{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));background:#d9f2fb;border-top:1px solid #a7d4e4;border-bottom:1px solid #a7d4e4;padding:18px 24px 20px}
+.profile-summary article{min-width:0;padding:0 18px;border-right:1px solid #477bab}
+.profile-summary article:first-child{padding-left:8px}
+.profile-summary article:last-child{border-right:0;padding-right:8px}
+.profile-summary h2{margin:0 0 10px;color:#0c4e99;font:800 clamp(15px,1.35vw,20px)/1 Arial,Helvetica,sans-serif;text-transform:uppercase}
+.profile-summary p{margin:0;color:#132c43;font-size:clamp(14px,1.12vw,17px);line-height:1.32}
+
+@media(max-width:850px){
+  .compact-service-strip{width:54%!important;min-width:280px!important}
+  .profile-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 0;padding:18px 14px}
+  .profile-summary article:nth-child(2n){border-right:0}
+}
+@media(max-width:520px){
+  .compact-service-strip{width:84%!important;min-width:0!important}
+  .profile-summary{grid-template-columns:1fr}
+  .profile-summary article{border-right:0;border-bottom:1px solid #8dbbd1;padding:0 4px 16px}
+  .profile-summary article:last-child{border-bottom:0;padding-bottom:0}
+}
+
+/* Edge-to-edge linked icon strip and restored illustrations for all six profile areas. */
+.compact-service-strip{
+  width:100%!important;
+  min-width:0!important;
+  max-width:none!important;
+  margin:0!important;
+  border-left:0!important;
+  border-right:0!important;
+  box-shadow:none!important;
+  aspect-ratio:1570/285!important;
+  background-image:url("assets/site/portfolio-type-icons-edge.jpg")!important;
+  background-size:100% 100%!important;
+}
+.profile-summary{padding:0;background:#d9f2fb;align-items:stretch}
+.profile-summary article{padding:0 18px 20px;background:#d9f2fb}
+.profile-summary article:first-child{padding-left:0}
+.profile-summary article:last-child{padding-right:0}
+.profile-summary article>img{display:block;width:calc(100% + 36px);max-width:none;height:auto;aspect-ratio:320/390;object-fit:cover;margin:0 -18px 16px;border-bottom:1px solid #9bb2c4}
+.profile-summary article:first-child>img{width:calc(100% + 18px);margin-left:0}
+.profile-summary article:last-child>img{width:calc(100% + 18px);margin-right:0}
+.profile-summary h2,.profile-summary p{margin-left:0;margin-right:0}
+
+@media(max-width:850px){
+  .compact-service-strip{width:100%!important;min-width:0!important;max-width:none!important}
+  .profile-summary article{padding:0 14px 18px}
+  .profile-summary article>img,.profile-summary article:first-child>img,.profile-summary article:last-child>img{width:calc(100% + 28px);margin:0 -14px 14px}
+}
+@media(max-width:520px){
+  .compact-service-strip{width:100%!important}
+  .profile-summary article{padding:0 14px 18px}
+}
+
+/* Crisp vector icon row and fully contained illustrated profile panels. */
+.compact-service-strip{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:0!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  margin:0!important;
+  padding:10px 12px 12px!important;
+  gap:0!important;
+  overflow:hidden!important;
+  background:#fff7e6!important;
+  border-top:1px solid #eadfc9!important;
+  border-bottom:1px solid #e3d7c0!important;
+}
+.compact-service-choice{
+  display:flex!important;
+  min-width:0!important;
+  min-height:150px!important;
+  height:auto!important;
+  padding:4px 12px 2px!important;
+  border-right:1px solid #d7cdb9!important;
+  overflow:visible!important;
+}
+.compact-service-choice:last-child{border-right:0!important}
+.compact-service-choice>*{visibility:visible!important}
+.compact-icon{display:flex!important;width:100%!important;max-width:96px!important;height:76px!important;flex:0 0 76px!important;margin:0 0 5px!important;overflow:visible!important}
+.compact-icon svg{display:block!important;width:100%!important;height:100%!important}
+.compact-service-choice strong{display:block!important;font-size:clamp(14px,1.2vw,18px)!important;line-height:1.1!important;margin:0 0 7px!important;white-space:nowrap!important}
+.compact-button{display:flex!important;width:min(100%,150px)!important;min-height:32px!important;padding:6px 8px!important;font-size:clamp(10px,.9vw,13px)!important}
+
+.profile-summary{width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;padding:0!important}
+.profile-summary article,.profile-summary article:first-child,.profile-summary article:last-child{min-width:0;padding:12px 12px 18px!important;overflow:hidden;box-sizing:border-box}
+.profile-summary article>img,.profile-summary article:first-child>img,.profile-summary article:last-child>img{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  height:auto!important;
+  aspect-ratio:320/390!important;
+  object-fit:cover!important;
+  margin:0 0 14px!important;
+  border:1px solid #9bb2c4;
+}
+
+@media(max-width:850px){
+  .compact-service-strip{grid-template-columns:repeat(3,minmax(0,1fr))!important;row-gap:12px!important;padding:10px 8px!important}
+  .compact-service-choice:nth-child(3){border-right:0!important}
+  .compact-service-choice{min-height:142px!important;padding:4px 8px 2px!important}
+}
+@media(max-width:520px){
+  .compact-service-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .compact-service-choice:nth-child(3){border-right:1px solid #d7cdb9!important}
+  .compact-service-choice:nth-child(2n){border-right:0!important}
+  .profile-summary article,.profile-summary article:first-child,.profile-summary article:last-child{padding:12px 14px 18px!important}
+}
+
+/* Keep the illustrations and their headings visible together on desktop. */
+@media(min-width:851px){
+  .profile-summary article>img,.profile-summary article:first-child>img,.profile-summary article:last-child>img{
+    width:100%!important;
+    height:178px!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    object-position:center bottom!important;
+    background:#fff!important;
+  }
+}
+
+/* The supplied opening composition is kept intact and only scaled proportionally. */
+.locked-opening-composition{
+  position:relative;
+  width:100%;
+  container-type:inline-size;
+  overflow:hidden;
+}
+.locked-opening-composition>img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:none;
+}
+.locked-art-link{
+  position:absolute;
+  z-index:4;
+  display:block;
+  cursor:pointer;
+}
+.locked-art-link:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:1px;
+}
+.book-link{left:53.25%;width:23.7%;height:2.1%}
+.book-advertising-link{top:18.05%}
+.book-fundraising-link{top:20.05%}
+.book-educational-link{top:22.05%}
+.book-biography-link{top:24.1%}
+.book-comics-link{top:26.2%}
+.book-political-link{top:28.25%}
+.category-arrow{width:4.5%;height:3.2%;border-radius:50%}
+.category-advertising-arrow{left:29.4%;top:39.8%}
+.category-educational-arrow{left:62.2%;top:39.8%}
+.category-fundraising-arrow{left:94.9%;top:39.8%}
+.category-comics-arrow{left:29.4%;top:52.15%}
+.category-biography-arrow{left:62.2%;top:52.15%}
+.category-political-arrow{left:94.9%;top:52.15%}
+.profile-arrow{top:78.35%;width:4.3%;height:3.2%;border-radius:50%}
+.profile-experience-arrow{left:13.75%}
+.profile-expertise-arrow{left:30.15%}
+.profile-selected-arrow{left:46.55%}
+.profile-how-arrow{left:62.95%}
+.profile-tools-arrow{left:79.35%}
+.profile-seeking-arrow{left:95.5%}
+.type-icon{top:82.25%;width:14.6%;height:7.7%}
+.type-idea-icon{left:2.1%}
+.type-product-icon{left:18.4%}
+.type-company-icon{left:34.75%}
+.type-institution-icon{left:51.1%}
+.type-service-icon{left:67.45%}
+.type-person-icon{left:83.75%}
+.locked-seeking-text{
+  position:absolute;
+  left:84%;
+  top:71.75%;
+  width:16%;
+  height:10.2%;
+  box-sizing:border-box;
+  margin:0;
+  padding:.45% .65%;
+  overflow:hidden;
+  background:#e5f9fd;
+  color:#183550;
+  font-family:"Arial Narrow",Arial,sans-serif;
+  font-size:1.48cqw;
+  font-weight:400;
+  line-height:1.14;
+  text-align:left;
+}
+.first-page>.hero-masthead,
+.first-page>.compact-service-strip,
+.first-page>.profile-summary,
+.first-page>.opening-contact{
+  display:none!important;
+}
+
+/* v43: unite each restored illustration with its matching copy as one visual card. */
+.profile-summary{
+  gap:12px;
+  padding:12px!important;
+  background:#cfeaf5;
+}
+.profile-summary article,
+.profile-summary article:first-child,
+.profile-summary article:last-child{
+  position:relative;
+  min-height:390px;
+  padding:0!important;
+  border:1px solid #78a8c3!important;
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 5px 14px rgba(20,62,92,.14);
+  isolation:isolate;
+}
+.profile-summary article>img,
+.profile-summary article:first-child>img,
+.profile-summary article:last-child>img{
+  position:absolute;
+  inset:0;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  border:0!important;
+  aspect-ratio:auto!important;
+  object-fit:cover!important;
+  object-position:center top!important;
+  background:#fff!important;
+  z-index:-2;
+}
+.profile-summary article::after{
+  content:"";
+  position:absolute;
+  inset:38% 0 0;
+  background:linear-gradient(to bottom,rgba(229,247,253,.08),rgba(229,247,253,.94) 25%,#e5f7fd 48%);
+  z-index:-1;
+}
+.profile-summary h2{
+  margin:228px 15px 9px;
+  color:#06458b;
+  font-size:clamp(16px,1.3vw,20px);
+  text-shadow:0 1px 0 #fff;
+}
+.profile-summary p{
+  margin:0 15px 16px;
+  color:#102b43;
+  font-size:clamp(14px,1vw,16px);
+  line-height:1.34;
+}
+
+@media(max-width:850px){
+  .profile-summary{gap:12px;padding:12px!important}
+  .profile-summary article,
+  .profile-summary article:first-child,
+  .profile-summary article:last-child{min-height:430px;padding:0!important;border-bottom:1px solid #78a8c3!important}
+  .profile-summary h2{margin-top:258px}
+}
+@media(max-width:520px){
+  .profile-summary{grid-template-columns:1fr!important}
+  .profile-summary article,
+  .profile-summary article:first-child,
+  .profile-summary article:last-child{min-height:500px;padding:0!important}
+  .profile-summary article::after{inset:48% 0 0}
+  .profile-summary h2{margin:330px 18px 10px;font-size:22px}
+  .profile-summary p{margin:0 18px 20px;font-size:17px}
+}
