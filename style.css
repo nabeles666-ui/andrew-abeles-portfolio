@@ -734,6 +734,16 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
   display:none!important;
 }
 
+/* Featured public-awareness category added without changing the existing portfolio composition. */
+.stop-antisemitism-feature{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:14px clamp(18px,4vw,56px);background:#10151d;color:#fff;border-bottom:5px solid #c8322d;text-decoration:none}
+.stop-antisemitism-feature span{padding:6px 9px;background:#c8322d;font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+.stop-antisemitism-feature strong{font:900 clamp(1.55rem,3vw,2.8rem)/1 Impact,"Arial Black",sans-serif;letter-spacing:.02em;text-transform:uppercase}
+.stop-antisemitism-feature em{font-style:normal;font-size:.82rem;font-weight:800;letter-spacing:.04em;text-align:right}
+.stop-antisemitism-feature:hover,.stop-antisemitism-feature:focus-visible{background:#183b57}
+.stop-antisemitism-card{border-color:#c8322d!important;background:#10151d!important;color:#fff!important}
+.stop-antisemitism-card strong{color:#fff!important}.stop-antisemitism-card em{background:#c8322d!important}
+@media(max-width:720px){.stop-antisemitism-feature{grid-template-columns:1fr;gap:8px}.stop-antisemitism-feature em{text-align:left}}
+
 /* v43: unite each restored illustration with its matching copy as one visual card. */
 .profile-summary{
   gap:12px;
