@@ -744,6 +744,9 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .stop-antisemitism-feature:hover,.stop-antisemitism-feature:focus-visible{background:#183b57}
 .stop-antisemitism-card{border-color:#c8322d!important;background:#10151d!important;color:#fff!important}
 .stop-antisemitism-card strong{color:#fff!important}.stop-antisemitism-card em{background:#c8322d!important}
+.rest-in-peace-card{border-color:#c58d2b!important;background:#fffaf0!important}
+.rest-in-peace-card img{object-position:center 11%}
+.rest-in-peace-card em{background:#0a315c!important}
 @media(max-width:720px){.stop-antisemitism-feature{grid-template-columns:1fr;gap:8px}.stop-antisemitism-feature em{text-align:left}}
 
 /* v43: unite each restored illustration with its matching copy as one visual card. */
