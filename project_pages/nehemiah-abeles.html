@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>The Adventures of Nehemiah Abeles — Two-Page Comic Feature | Andrew Abeles</title>
+<meta name="description" content="A two-page cemetery-sales comic feature: The Adventures of Nehemiah Abeles, Eternal Real Estate Broker."/>
+<link rel="canonical" href="https://nabeles666-ui.github.io/andrew-abeles-portfolio/project_pages/nehemiah-abeles.html"/>
+<link rel="stylesheet" href="../style.css"/>
+<style>
+  .comic-feature{min-height:100vh;background:#f6f1e7;color:#102b43}
+  .comic-feature__header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px clamp(14px,4vw,44px);background:rgba(7,27,46,.96);color:#fff;box-shadow:0 3px 16px rgba(0,0,0,.25)}
+  .comic-feature__header a{color:#fff;font-weight:800;text-decoration:none}
+  .comic-feature__header a:hover,.comic-feature__header a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+  .comic-feature__header nav{display:flex;gap:8px}
+  .comic-feature__header nav a{padding:8px 11px;border:1px solid rgba(255,255,255,.45);border-radius:999px}
+  .comic-feature__intro{max-width:900px;margin:0 auto;padding:34px 18px 20px;text-align:center}
+  .comic-feature__intro h1{margin:0 0 8px;color:#0a315c;font:700 clamp(2rem,6vw,4.4rem)/1 Georgia,serif}
+  .comic-feature__intro p{margin:0 auto;max-width:720px;font-size:clamp(1rem,2vw,1.18rem);line-height:1.55}
+  .comic-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,34px);max-width:1500px;margin:0 auto;padding:16px clamp(12px,3vw,38px) 34px;align-items:start}
+  .comic-page{margin:0;scroll-margin-top:86px;background:#fff;border:1px solid #b9aa90;box-shadow:0 10px 28px rgba(38,31,20,.16)}
+  .comic-page img{display:block;width:100%;height:auto}
+  .comic-page figcaption{padding:12px 15px;background:#071b2e;color:#fff;font-weight:800;text-align:center}
+  @media(max-width:760px){
+    .comic-feature__header{position:relative;align-items:flex-start;flex-direction:column;gap:10px}
+    .comic-feature__header nav{width:100%;overflow-x:auto;padding-bottom:2px}
+    .comic-feature__header nav a{flex:none}
+    .comic-pages{grid-template-columns:1fr;max-width:680px}
+    .comic-page{scroll-margin-top:18px}
+  }
+</style>
+</head>
+<body class="comic-feature">
+<header class="comic-feature__header">
+  <a href="../index.html#portfolio">← Andrew Abeles Portfolio</a>
+  <nav aria-label="Comic page navigation">
+    <a href="#page-1">Page 1</a>
+    <a href="#page-2">Page 2</a>
+  </nav>
+</header>
+<main>
+  <section class="comic-feature__intro" aria-labelledby="feature-title">
+    <h1 id="feature-title">The Adventures of Nehemiah Abeles</h1>
+    <p>A two-page comic feature by Andrew Abeles.</p>
+  </section>
+  <section class="comic-pages" aria-label="The Adventures of Nehemiah Abeles comic pages">
+    <figure class="comic-page" id="page-1">
+      <img src="../assets/projects/nehemiah-abeles/page-1.png" alt="The Adventures of Nehemiah Abeles, Episode 1: The Non-Believer, page 1"/>
+      <figcaption>Page 1</figcaption>
+    </figure>
+    <figure class="comic-page" id="page-2">
+      <img src="../assets/projects/nehemiah-abeles/page-2.png" alt="The Adventures of Nehemiah Abeles, Episode 1: The Non-Believer, page 2"/>
+      <figcaption>Page 2</figcaption>
+    </figure>
+  </section>
+</main>
+</body>
+</html>
