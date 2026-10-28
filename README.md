@@ -10,7 +10,7 @@ Open `index.html` in a browser. For fully reliable relative links, serve the fol
 
 - Main portfolio: https://nabeles666-ui.github.io/andrew-abeles-portfolio/
 - Fundraising portfolio: https://nabeles666-ui.github.io/andrew-abeles-portfolio/fundraising/
-- anti-Semitism and Holocaust: https://nabeles666-ui.github.io/andrew-abeles-portfolio/stop-antisemitism.html
+- Anti-Semitism and Holocaust: https://nabeles666-ui.github.io/andrew-abeles-portfolio/stop-antisemitism.html
 
 ## Main sections
 
