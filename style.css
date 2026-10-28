@@ -869,3 +869,10 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .fundraising-packages-feature em{font-style:normal;font-size:.82rem;font-weight:900;text-align:right}
 .fundraising-packages-feature:hover,.fundraising-packages-feature:focus-visible{background:#fff0a6;outline:3px solid #d83226;outline-offset:-3px}
 @media(max-width:720px){.fundraising-packages-feature{grid-template-columns:1fr;gap:8px}.fundraising-packages-feature em{text-align:left;line-height:1.45}}
+
+/* Standalone section symbols: no composite artwork in category cards. */
+.portfolio-hero{width:100%;aspect-ratio:1280/600;overflow:hidden;position:relative;background:#173b59}.portfolio-hero>img{display:block;width:100%;max-width:100%;height:auto}
+.section-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:22px;background:#edf4f7}.section-card{display:grid;grid-template-columns:1fr auto;gap:14px;padding:18px;border:1px solid #abc0ce;background:#fff;border-radius:8px;color:#173b59;text-decoration:none;font-size:clamp(16px,2vw,23px)}.section-card img{grid-column:1/-1;width:100%;height:150px;object-fit:contain;margin:0;background:#fff}.section-card strong{align-self:center}.section-card span{align-self:center}.section-card:focus-visible{outline:3px solid #d7a32c;outline-offset:3px}
+.working-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:24px}.working-summary article{min-width:0}.working-summary img{display:block;width:90px;height:90px;object-fit:contain}.working-summary h2{font-size:22px;margin:12px 0}.working-summary p{line-height:1.55}
+.selected-card img{object-fit:contain!important;object-position:center!important;background:white!important}.selected-card{overflow:hidden;isolation:isolate}
+@media(max-width:640px){.section-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:12px;gap:10px}.section-card{padding:12px}.section-card img{height:110px}.working-summary{grid-template-columns:repeat(2,minmax(0,1fr));padding:16px;gap:16px}.working-summary h2{font-size:19px}}
