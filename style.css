@@ -863,12 +863,12 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
   .community-comments__inner{padding:22px 16px;border-radius:12px}
 }
 
-.fundraising-packages-feature{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;padding:16px clamp(18px,4vw,56px);background:#ffd22c;color:#171717;border-bottom:4px solid #171717;text-decoration:none}
-.fundraising-packages-feature span{padding:6px 9px;background:#d83226;color:#fff;font-size:.68rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
-.fundraising-packages-feature strong{font:900 clamp(1.45rem,3vw,2.65rem)/1 Impact,"Arial Black",sans-serif;letter-spacing:.01em;text-transform:uppercase}
-.fundraising-packages-feature em{font-style:normal;font-size:.82rem;font-weight:900;text-align:right}
+.fundraising-packages-feature{display:flex;align-items:center;gap:12px;padding:6px 18px;background:#ffd22c;color:#171717;border-bottom:1px solid #171717;text-decoration:none;min-height:40px;box-sizing:border-box}
+.fundraising-packages-feature span{padding:3px 6px;background:#d83226;color:#fff;font:700 10px/1.2 Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;flex-shrink:0}
+.fundraising-packages-feature strong{font:700 16px/1.15 Arial,sans-serif;letter-spacing:0;text-transform:uppercase}
+.fundraising-packages-feature em{font:700 12px/1.2 Arial,sans-serif;font-style:normal;margin-left:auto}
 .fundraising-packages-feature:hover,.fundraising-packages-feature:focus-visible{background:#fff0a6;outline:3px solid #d83226;outline-offset:-3px}
-@media(max-width:720px){.fundraising-packages-feature{grid-template-columns:1fr;gap:8px}.fundraising-packages-feature em{text-align:left;line-height:1.45}}
+@media(max-width:720px){.fundraising-packages-feature{flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;padding:5px 12px;min-height:40px}.fundraising-packages-feature span{display:none}.fundraising-packages-feature strong{font-size:14px;line-height:16px}.fundraising-packages-feature em{margin-left:0;font-size:11px;line-height:13px;text-align:left}}
 
 /* Standalone section symbols: no composite artwork in category cards. */
 .portfolio-hero{width:100%;aspect-ratio:1280/600;overflow:hidden;position:relative;background:#173b59}.portfolio-hero>img{display:block;width:100%;max-width:100%;height:auto}
