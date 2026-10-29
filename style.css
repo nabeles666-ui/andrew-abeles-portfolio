@@ -689,14 +689,14 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .book-educational-link{top:22.05%}
 .book-biography-link{top:24.1%}
 .book-comics-link{top:26.2%}
-.book-political-link{top:28.25%}
+.book-humor-link{top:28.25%}
 .category-arrow{width:4.5%;height:3.2%;border-radius:50%}
 .category-advertising-arrow{left:29.4%;top:39.8%}
 .category-educational-arrow{left:62.2%;top:39.8%}
 .category-fundraising-arrow{left:94.9%;top:39.8%}
 .category-comics-arrow{left:29.4%;top:52.15%}
 .category-biography-arrow{left:62.2%;top:52.15%}
-.category-political-arrow{left:94.9%;top:52.15%}
+.category-humor-arrow{left:94.9%;top:52.15%}
 .profile-arrow{top:78.35%;width:4.3%;height:3.2%;border-radius:50%}
 .profile-experience-arrow{left:13.75%}
 .profile-expertise-arrow{left:30.15%}
@@ -883,3 +883,9 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .comments-dialog{width:min(760px,calc(100% - 24px));max-height:88dvh;padding:0;border:0;border-radius:14px;box-shadow:0 16px 60px #0006;color:#173b59;background:#fff;overflow:auto}
 .comments-dialog::backdrop{background:#10151db3}.comments-dialog .community-comments{padding:0;margin:0;background:#fff}.comments-dialog .community-comments__inner{border:0;box-shadow:none;margin:0;padding:14px 24px 24px}.comments-dialog .community-comments h2{font-size:clamp(24px,5vw,36px)}
 .comments-dialog__close{display:flex;justify-content:flex-end;position:sticky;top:0;margin:0;padding:8px;background:#fff;z-index:2}.comments-dialog__close button{width:40px;height:40px;font-size:28px;border:0;border-radius:50%;background:#eef4f8;color:#173b59;cursor:pointer}
+
+
+/* Humor and Satire replaces the former category in the opening artwork. */
+.humor-book-label,.humor-category-label{position:absolute;z-index:3;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:none;color:#fff;font-family:Impact,"Arial Narrow",Arial,sans-serif;font-weight:700;line-height:1;white-space:nowrap}
+.humor-book-label{left:57.3%;top:28.15%;width:16.5%;height:1.65%;background:#971c18;font-size:1.75cqw}
+.humor-category-label{left:67.8%;top:52.35%;width:27.2%;height:2.85%;background:linear-gradient(90deg,#d93c27,#cc3826);font-size:2.48cqw}
