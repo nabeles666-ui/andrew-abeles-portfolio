@@ -876,3 +876,10 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .working-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:24px}.working-summary article{min-width:0}.working-summary img{display:block;width:90px;height:90px;object-fit:contain}.working-summary h2{font-size:22px;margin:12px 0}.working-summary p{line-height:1.55}
 .selected-card img{object-fit:contain!important;object-position:center!important;background:white!important}.selected-card{overflow:hidden;isolation:isolate}
 @media(max-width:640px){.section-grid{grid-template-columns:repeat(2,minmax(0,1fr));padding:12px;gap:10px}.section-card{padding:12px}.section-card img{height:110px}.working-summary{grid-template-columns:repeat(2,minmax(0,1fr));padding:16px;gap:16px}.working-summary h2{font-size:19px}}
+
+/* Compact comments access beside the second-page contact details. */
+.comments-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;padding:9px;border:2px solid #111;border-radius:50%;background:#fbf0d3;color:#17325c;cursor:pointer;box-shadow:2px 3px 0 #111}
+.comments-icon:hover{background:#fff}.comments-icon:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.comments-dialog{width:min(760px,calc(100% - 24px));max-height:88dvh;padding:0;border:0;border-radius:14px;box-shadow:0 16px 60px #0006;color:#173b59;background:#fff;overflow:auto}
+.comments-dialog::backdrop{background:#10151db3}.comments-dialog .community-comments{padding:0;margin:0;background:#fff}.comments-dialog .community-comments__inner{border:0;box-shadow:none;margin:0;padding:14px 24px 24px}.comments-dialog .community-comments h2{font-size:clamp(24px,5vw,36px)}
+.comments-dialog__close{display:flex;justify-content:flex-end;position:sticky;top:0;margin:0;padding:8px;background:#fff;z-index:2}.comments-dialog__close button{width:40px;height:40px;font-size:28px;border:0;border-radius:50%;background:#eef4f8;color:#173b59;cursor:pointer}

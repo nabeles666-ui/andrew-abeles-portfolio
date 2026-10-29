@@ -73,3 +73,25 @@ if (location.hash) {
   const id = location.hash.slice(1);
   if (document.getElementById(id)) setTimeout(() => focusProject(id), 120);
 }
+
+const commentsDialog = document.getElementById('comments-dialog');
+function openComments(event) {
+  event?.preventDefault();
+  if (!commentsDialog) return;
+  if (!commentsDialog.open) commentsDialog.showModal();
+  const template = commentsDialog.querySelector('[data-comments-widget]');
+  if (template) {
+    const widget = document.createElement('script');
+    for (const attribute of template.attributes) {
+      if (!['type', 'data-comments-widget', 'data-src'].includes(attribute.name)) {
+        widget.setAttribute(attribute.name, attribute.value);
+      }
+    }
+    widget.src = template.dataset.src;
+    widget.async = true;
+    template.replaceWith(widget);
+  }
+}
+document.getElementById('comments')?.addEventListener('click', openComments);
+document.querySelectorAll('a[href="#comments"]').forEach(link => link.addEventListener('click', openComments));
+if (location.hash === '#comments') openComments();
