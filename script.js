@@ -33,7 +33,7 @@ function clearProjectFilter(){
   document.getElementById('category-context')?.setAttribute('hidden','');
 }
 function showProjectGroup(idList, label='Selected category'){
-  const wanted=idList.map(id=>document.getElementById(id)).filter(Boolean);
+  const wanted=idList.map(id=>document.getElementById(id)?.closest(".selected-card")).filter(Boolean);
   if(!wanted.length) return;
   allCards.forEach(card => card.hidden = !wanted.includes(card));
   cards=wanted; currentIndex=0;
@@ -46,7 +46,7 @@ document.querySelector('.show-all-projects')?.addEventListener('click',()=>{clea
 
 function focusProject(id) {
   clearProjectFilter();
-  const card = document.getElementById(id);
+  const card = document.getElementById(id)?.closest(".selected-card");
   if (!card || !carousel) return;
   const idx = cards.indexOf(card);
   if (idx >= 0) goToProject(idx);
