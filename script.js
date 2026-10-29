@@ -1,3 +1,6 @@
+if (!document.getElementById('project-carousel') && (location.hash === '#portfolio' || location.hash.startsWith('#project-'))) {
+  location.replace('projects.html' + location.hash);
+}
 const carousel = document.getElementById('project-carousel');
 const previousButton = document.querySelector('.carousel-arrow.previous');
 const nextButton = document.querySelector('.carousel-arrow.next');
@@ -74,24 +77,7 @@ if (location.hash) {
   if (document.getElementById(id)) setTimeout(() => focusProject(id), 120);
 }
 
-const commentsDialog = document.getElementById('comments-dialog');
-function openComments(event) {
-  event?.preventDefault();
-  if (!commentsDialog) return;
-  if (!commentsDialog.open) commentsDialog.showModal();
-  const template = commentsDialog.querySelector('[data-comments-widget]');
-  if (template) {
-    const widget = document.createElement('script');
-    for (const attribute of template.attributes) {
-      if (!['type', 'data-comments-widget', 'data-src'].includes(attribute.name)) {
-        widget.setAttribute(attribute.name, attribute.value);
-      }
-    }
-    widget.src = template.dataset.src;
-    widget.async = true;
-    template.replaceWith(widget);
-  }
+const projectQuery = new URLSearchParams(location.search);
+if (projectQuery.has('group')) {
+  showProjectGroup(projectQuery.get('group').trim().split(/\s+/), projectQuery.get('label') || 'Selected category');
 }
-document.getElementById('comments')?.addEventListener('click', openComments);
-document.querySelectorAll('a[href="#comments"]').forEach(link => link.addEventListener('click', openComments));
-if (location.hash === '#comments') openComments();
