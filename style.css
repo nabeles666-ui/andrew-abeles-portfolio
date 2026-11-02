@@ -902,3 +902,10 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 /* Make the six profile boxes clickable across their whole panels too. */
 .profile-arrow{top:55.7%;width:16.1%;height:25.9%;border-radius:0}
 .profile-experience-arrow{left:1.6%}.profile-expertise-arrow{left:18%}.profile-selected-arrow{left:34.4%}.profile-how-arrow{left:50.8%}.profile-tools-arrow{left:67.2%}.profile-seeking-arrow{left:83.6%}
+
+/* Consistent image, title and action rows throughout the project carousel. */
+.project-carousel{align-items:stretch}
+.project-carousel .selected-card{display:flex;flex-direction:column;align-items:stretch}
+.project-carousel .selected-card img{box-sizing:border-box;flex:none;width:100%;height:clamp(140px,15vw,200px);aspect-ratio:auto;object-fit:contain!important;object-position:center!important}
+.project-carousel .selected-card strong{flex:1;display:flex;align-items:center;justify-content:center;min-height:3.3em}
+.project-carousel .selected-card em{align-self:center}
