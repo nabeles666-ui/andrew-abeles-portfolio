@@ -689,14 +689,14 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .book-educational-link{top:22.05%}
 .book-biography-link{top:24.1%}
 .book-comics-link{top:26.2%}
-.book-humor-link{top:28.25%}
+.book-antisemitism-link{top:28.25%}
 .category-arrow{width:4.5%;height:3.2%;border-radius:50%}
 .category-advertising-arrow{left:29.4%;top:39.8%}
 .category-educational-arrow{left:62.2%;top:39.8%}
 .category-fundraising-arrow{left:94.9%;top:39.8%}
 .category-comics-arrow{left:29.4%;top:52.15%}
 .category-biography-arrow{left:62.2%;top:52.15%}
-.category-humor-arrow{left:94.9%;top:52.15%}
+.category-antisemitism-arrow{left:94.9%;top:52.15%}
 .profile-arrow{top:78.35%;width:4.3%;height:3.2%;border-radius:50%}
 .profile-experience-arrow{left:13.75%}
 .profile-expertise-arrow{left:30.15%}
@@ -885,10 +885,12 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .comments-dialog__close{display:flex;justify-content:flex-end;position:sticky;top:0;margin:0;padding:8px;background:#fff;z-index:2}.comments-dialog__close button{width:40px;height:40px;font-size:28px;border:0;border-radius:50%;background:#eef4f8;color:#173b59;cursor:pointer}
 
 
-/* Humor and Satire replaces the former category in the opening artwork. */
-.humor-book-label,.humor-category-label{position:absolute;z-index:3;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:none;color:#fff;font-family:Impact,"Arial Narrow",Arial,sans-serif;font-weight:700;line-height:1;white-space:nowrap}
-.humor-book-label{left:57.3%;top:27.75%;width:16.5%;height:2.05%;background:#971c18;font-size:1.75cqw}
-.humor-category-label{left:67.8%;top:52.35%;width:27.2%;height:2.85%;background:linear-gradient(90deg,#d93c27,#cc3826);font-size:2.48cqw}
+/* Replace the opening artwork's former Humor and Satire book/card while retaining its header link. */
+.antisemitism-book-label{position:absolute;z-index:3;left:57.3%;top:27.75%;width:16.5%;height:2.05%;display:flex;align-items:center;justify-content:center;box-sizing:border-box;pointer-events:none;background:#971c18;color:#fff;font:700 1.12cqw/1 Impact,"Arial Narrow",Arial,sans-serif;white-space:nowrap}
+.antisemitism-category-card{position:absolute;z-index:3;left:67.5%;top:43.35%;width:32.2%;height:12.1%;display:grid;grid-template-columns:30% 1fr auto;align-items:center;gap:1.2cqw;padding:.7cqw 1.1cqw;box-sizing:border-box;pointer-events:none;background:#f5f4e9;border:.16cqw solid #173b59;color:#173b59}
+.antisemitism-category-card img{display:block;width:100%;height:100%;object-fit:contain}
+.antisemitism-category-card strong{font:700 1.65cqw/.95 Impact,"Arial Narrow",Arial,sans-serif;letter-spacing:.02em}
+.antisemitism-category-card b{display:grid;place-items:center;width:2.8cqw;height:2.8cqw;border-radius:50%;background:#d93c27;color:#fff;font:700 2cqw/1 Arial,sans-serif}
 
 /* Full artwork panels, including illustration, category title and arrow. */
 .category-arrow{width:32.2%;height:11.65%;border-radius:0}
@@ -897,7 +899,7 @@ a.service-choice:focus-visible{outline:2px solid #0878d1;outline-offset:4px;bord
 .category-fundraising-arrow{left:67.5%;top:31.5%}
 .category-comics-arrow{left:2.5%;top:43.35%;height:12.1%}
 .category-biography-arrow{left:35.5%;top:43.35%;height:12.1%}
-.category-humor-arrow{left:67.5%;top:43.35%;height:12.1%}
+.category-antisemitism-arrow{left:67.5%;top:43.35%;height:12.1%}
 .category-arrow:hover,.category-arrow:focus-visible{outline:3px solid #fff;outline-offset:-4px;box-shadow:inset 0 0 0 6px #17325c}
 /* Make the six profile boxes clickable across their whole panels too. */
 .profile-arrow{top:55.7%;width:16.1%;height:25.9%;border-radius:0}
