@@ -1,0 +1,1 @@
+STAGING ONLY — NOT QUALITY APPROVED. 42 image pages, 4 linked collections, 8 existing alias paths. The 38 non-Klein pages derive from composite-sheet crops and have unverified text, panel count, faces and resolution. Klein family pages are selected latest review proofs but remain unapproved for print. Do not overwrite live website until full visual inspection and corrections.
